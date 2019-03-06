@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Characters/Players/Armatures/Armature-M.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=4]
 
 [node name="Player" index="0" instance=ExtResource( 1 )]
 
@@ -48,6 +49,24 @@ data = {
 "type": "blend2"
 } ]
 }
+
+[node name="Camera" type="Camera" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06923, 2.70815 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+script = ExtResource( 4 )
+mouse_sensitivity = 1200
 
 
 [editable path="Armature"]
