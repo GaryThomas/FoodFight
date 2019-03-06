@@ -1,14 +1,23 @@
 extends KinematicBody
 
+# Motion variables
 const SPEED = 10
 const UP = Vector3(0,1,0)
 
 var motion = Vector3()
 var facing_direction = 0
 
+# Animation variables
+const BLEND_MINIMUM = 0.125
+const RUN_BLEND_AMOUNT = 0.1
+const IDLE_BLEND_AMOUNT = 0.1
+
+var blend_state = 0
+
 func _process(delta):
 	move()
 	face_forward()
+	animate()
 	
 func move():
 	motion = Vector3(0,0,0)
@@ -28,4 +37,12 @@ func move():
 
 func face_forward():
 	$Armature.rotation.y = facing_direction
-
+	
+func animate():
+	var animate = $Armature/AnimationTreePlayer
+	if motion.length() > BLEND_MINIMUM:
+		blend_state += RUN_BLEND_AMOUNT
+	else:
+		blend_state -= IDLE_BLEND_AMOUNT
+	blend_state = clamp(blend_state, 0, 1)
+	animate.blend2_node_set_amount("IdleRun", blend_state)
