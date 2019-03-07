@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Models/Architecture/floorFull.mesh" type="ArrayMesh" id=1]
-[ext_resource path="res://Scenes/Furniture/Desk.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Characters/Players/PlayerM.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Characters/Players/PlayerM.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Architecture/WindowSlide.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Architecture/Window.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Architecture/Wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Architecture/Doorway.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Architecture/WideDoorway.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 
@@ -14,6 +18,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Floor" type="MeshInstance" parent="." index="0"]
 
+editor/display_folded = true
 transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 15, 35, 0, -35 )
 layers = 1
 material_override = null
@@ -45,11 +50,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 shape = SubResource( 1 )
 disabled = false
 
-[node name="Desk" parent="." index="1" instance=ExtResource( 2 )]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4821, 0.487395, 1.41241 )
-
-[node name="DirectionalLight" type="DirectionalLight" parent="." index="2"]
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="1"]
 
 transform = Transform( -0.492404, -0.766044, 0.413176, -0.586824, 0.642788, 0.492404, -0.642788, 0, -0.766045, 7, 14, 0 )
 layers = 1
@@ -77,9 +78,35 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Light", "Shadow", "Transform" ]
 
-[node name="Player" parent="." index="3" instance=ExtResource( 3 )]
+[node name="Player" parent="." index="2" instance=ExtResource( 2 )]
 
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 1.12831, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31668, 3.01702 )
+
+[node name="Furniture" type="Spatial" parent="." index="3"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Walls" type="Spatial" parent="." index="4"]
+
+[node name="WindowSlide" parent="Walls" index="0" instance=ExtResource( 3 )]
+
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.5, 0.2, 0 )
+
+[node name="Window" parent="Walls" index="1" instance=ExtResource( 4 )]
+
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 0.2, 0 )
+
+[node name="Wall" parent="Walls" index="2" instance=ExtResource( 5 )]
+
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.5, 0.2, 0 )
+
+[node name="Doorway" parent="Walls" index="3" instance=ExtResource( 6 )]
+
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1, 0.2, 0 )
+
+[node name="WideDoorway" parent="Walls" index="4" instance=ExtResource( 7 )]
+
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.5, 0.2, 0 )
 
 
 [editable path="Player"]

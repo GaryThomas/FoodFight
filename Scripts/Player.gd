@@ -1,4 +1,4 @@
-extends KinematicBody
+extends "res://Scripts/Character.gd"
 
 # Motion variables
 const MAX_SPEED = 20
@@ -75,6 +75,10 @@ func horiz_acceleration(direction, delta):
 	velocity.x = velocity_2D.x
 	velocity.z = velocity_2D.z
 	return velocity
+	
+func _input(event):
+	if Input.is_action_just_pressed("fire"):
+		fire()
 	
 func animate():
 	var animate = $Armature/AnimationTreePlayer
