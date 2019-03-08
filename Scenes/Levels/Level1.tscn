@@ -2,11 +2,16 @@
 
 [ext_resource path="res://Scenes/Levels/LevelTemplate.tscn" type="PackedScene" id=1]
 
-[node name="Level1" instance=ExtResource( 1 )]
+[node name="Level1" index="0" instance=ExtResource( 1 )]
 
 [node name="Player" parent="." index="2"]
 
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.31668, 3.01702 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.31668, 4.5 )
+
+[node name="ForwardLaunchPoint" parent="Player" index="4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56009, 0.72 )
+_sections_unfolded = [ "Transform" ]
 
 
 [editable path="Player"]

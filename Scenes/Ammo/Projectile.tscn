@@ -13,9 +13,9 @@ is_hemisphere = false
 
 [sub_resource type="SphereShape" id=2]
 
-radius = 0.5
+radius = 0.19983
 
-[node name="Projectile" type="RigidBody" index="0"]
+[node name="Projectile" type="RigidBody"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
